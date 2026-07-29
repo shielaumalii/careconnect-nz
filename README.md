@@ -7,7 +7,7 @@ A Mini Health Information Exchange (HIE) built with Spring Boot and React.
 - Java 21
 - Spring Boot
 - React
-- TypeScript
+- Javascript
 - PostgreSQL
 - Maven
 
