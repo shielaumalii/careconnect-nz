@@ -80,17 +80,27 @@ public class PatientService {
         return response;
     }
 
-    public Patient updatePatient(Long id, Patient updatedPatient) {
+    public PatientResponseDTO updatePatient(Long id, PatientRequestDTO request) {
 
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new PatientNotFoundException(id));
 
-        patient.setFirstName(updatedPatient.getFirstName());
-        patient.setLastName(updatedPatient.getLastName());
-        patient.setEmail(updatedPatient.getEmail());
-        patient.setPhoneNumber(updatedPatient.getPhoneNumber());
+        patient.setFirstName(request.getFirstName());
+        patient.setLastName(request.getLastName());
+        patient.setEmail(request.getEmail());
+        patient.setPhoneNumber(request.getPhoneNumber());
 
-        return patientRepository.save(patient);
+        Patient updatedPatient = patientRepository.save(patient);
+
+        PatientResponseDTO response = new PatientResponseDTO();
+
+        response.setId(updatedPatient.getId());
+        response.setFirstName(updatedPatient.getFirstName());
+        response.setLastName(updatedPatient.getLastName());
+        response.setEmail(updatedPatient.getEmail());
+        response.setPhoneNumber(updatedPatient.getPhoneNumber());
+
+        return response;
     }
 
     public void deletePatient(Long id) {

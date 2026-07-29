@@ -37,11 +37,11 @@ public class PatientController {
     }
 
     @PutMapping("/{id}")
-    public Patient updatePatient(
+    public PatientResponseDTO updatePatient(
             @PathVariable Long id,
-            @Valid @RequestBody Patient patient) {
+            @Valid @RequestBody PatientRequestDTO request) {
 
-        return patientService.updatePatient(id, patient);
+        return patientService.updatePatient(id, request);
     }
 
     @DeleteMapping("/{id}")
