@@ -3,9 +3,12 @@ package com.careconnect.service;
 import com.careconnect.entity.Patient;
 import com.careconnect.exception.PatientNotFoundException;
 import com.careconnect.repository.PatientRepository;
+import com.careconnect.dto.PatientRequestDTO;
+import com.careconnect.dto.PatientResponseDTO;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,17 +20,64 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
-    public List<Patient> getAllPatients() {
-        return patientRepository.findAll();
+    public List<PatientResponseDTO> getAllPatients() {
+
+        List<Patient> patients = patientRepository.findAll();
+
+        List<PatientResponseDTO> responseList = new ArrayList<>();
+
+        for (Patient patient : patients) {
+
+            PatientResponseDTO response = new PatientResponseDTO();
+
+            response.setId(patient.getId());
+            response.setFirstName(patient.getFirstName());
+            response.setLastName(patient.getLastName());
+            response.setEmail(patient.getEmail());
+            response.setPhoneNumber(patient.getPhoneNumber());
+
+            responseList.add(response);
+        }
+
+        return responseList;
     }
 
-    public Patient savePatient(Patient patient) {
-        return patientRepository.save(patient);
+    public PatientResponseDTO savePatient(PatientRequestDTO request) {
+
+        Patient patient = new Patient();
+
+        patient.setFirstName(request.getFirstName());
+        patient.setLastName(request.getLastName());
+        patient.setEmail(request.getEmail());
+        patient.setPhoneNumber(request.getPhoneNumber());
+
+        Patient savedPatient = patientRepository.save(patient);
+
+        PatientResponseDTO response = new PatientResponseDTO();
+
+        response.setId(savedPatient.getId());
+        response.setFirstName(savedPatient.getFirstName());
+        response.setLastName(savedPatient.getLastName());
+        response.setEmail(savedPatient.getEmail());
+        response.setPhoneNumber(savedPatient.getPhoneNumber());
+
+        return response;
     }
 
-    public Patient getPatientById(Long id) {
-        return patientRepository.findById(id)
+    public PatientResponseDTO getPatientById(Long id) {
+
+        Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new PatientNotFoundException(id));
+
+        PatientResponseDTO response = new PatientResponseDTO();
+
+        response.setId(patient.getId());
+        response.setFirstName(patient.getFirstName());
+        response.setLastName(patient.getLastName());
+        response.setEmail(patient.getEmail());
+        response.setPhoneNumber(patient.getPhoneNumber());
+
+        return response;
     }
 
     public Patient updatePatient(Long id, Patient updatedPatient) {

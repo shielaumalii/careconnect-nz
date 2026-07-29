@@ -1,9 +1,11 @@
 package com.careconnect.controller;
 
+import com.careconnect.dto.PatientRequestDTO;
+import com.careconnect.dto.PatientResponseDTO;
 import com.careconnect.entity.Patient;
 import com.careconnect.service.PatientService;
-import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,31 +20,32 @@ public class PatientController {
     }
 
     @GetMapping
-    public List<Patient> getAllPatients() {
+    public List<PatientResponseDTO> getAllPatients() {
         return patientService.getAllPatients();
     }
 
     @PostMapping
-    public Patient createPatient(@Valid @RequestBody Patient patient) {
-        return patientService.savePatient(patient);
+    public PatientResponseDTO createPatient(
+            @Valid @RequestBody PatientRequestDTO request) {
+
+        return patientService.savePatient(request);
     }
 
     @GetMapping("/{id}")
-    public Patient getPatientById(@PathVariable Long id) {
+    public PatientResponseDTO getPatientById(@PathVariable Long id) {
         return patientService.getPatientById(id);
     }
 
     @PutMapping("/{id}")
-    public Patient updatePatient(@PathVariable Long id,
-                                 @Valid @RequestBody Patient patient) {
+    public Patient updatePatient(
+            @PathVariable Long id,
+            @Valid @RequestBody Patient patient) {
 
         return patientService.updatePatient(id, patient);
     }
 
     @DeleteMapping("/{id}")
     public void deletePatient(@PathVariable Long id) {
-
         patientService.deletePatient(id);
-
     }
 }
