@@ -1,3 +1,5 @@
+<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/2084c797-a254-41c8-b5b8-fb374b7e554d" />
+
 # CareConnect NZ
 
 CareConnect NZ is a secure, enterprise-ready demo application for hospital clinical workflows. It is designed to showcase a modern Health Information Exchange (HIE) front-to-back integration: clinician dashboards, patient access, appointments, laboratory results, and AI-assisted clinical summarization.
