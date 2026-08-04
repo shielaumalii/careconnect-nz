@@ -10,7 +10,7 @@ CareConnect NZ is a secure, enterprise-ready demo application for hospital clini
 Why this project
 -------------
 
-CareConnect NZ is intended as a polished technical demo for healthcare partners (for example, Orion Health). It focuses on:
+CareConnect NZ is intended as a polished technical demo for healthcare partners. It focuses on:
 
 - Secure handling of Protected Health Information (PHI)
 - Clinician and patient workflows
@@ -25,11 +25,6 @@ Key Highlights
 - Demo-ready UIs: Dashboard, Patients, Appointments, Lab Results, AI Insights
 - Security-focused: RBAC, audit logging, encryption considerations
 - Extensible: designed for future FHIR/HL7 adapters and RAG AI pipelines
-
-Screenshot
-----------
-
-Add `assets/screenshots/dashboard.png` to this repo and it will appear here.
 
 Getting started (quick)
 -----------------------
@@ -103,15 +98,6 @@ Please open an issue or pull request. When contributing:
 - Add unit tests for new business logic
 - Keep UI components reusable and accessible
 
-Contact / Demo
---------------
-
-For demo coordination or Orion Health engagement, contact the repository owner.
-
-License
--------
-
-Add a LICENSE file (MIT or other) if you want to make this repository open-source.
 
 ---
 
